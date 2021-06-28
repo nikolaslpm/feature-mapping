@@ -1,4 +1,4 @@
-package com.nklpm.example;
+package com.nklpm.template.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

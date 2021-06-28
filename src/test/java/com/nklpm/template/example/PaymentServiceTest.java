@@ -1,4 +1,4 @@
-package com.nklpm.example;
+package com.nklpm.template.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

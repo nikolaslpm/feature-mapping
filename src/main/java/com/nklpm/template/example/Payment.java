@@ -1,23 +1,32 @@
-package com.nklpm.example;
+package com.nklpm.template.example;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class PaymentEventDto {
+@Setter
+@ToString
+@Builder(toBuilder = true)
+public class Payment {
 
-    private String paymentId;
+    public enum State {
+        APPROVED,
+        WAITING,
+        CANCELED
+    }
+
+    private String id;
     private String originAccount;
     private String destinationAccount;
     private BigDecimal amount;
     private String purpose;
+    private State state;
 }

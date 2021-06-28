@@ -1,4 +1,4 @@
-package com.nklpm.example;
+package com.nklpm.template.example;
 
 import java.math.BigDecimal;
 
