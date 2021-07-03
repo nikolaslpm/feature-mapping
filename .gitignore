@@ -8,3 +8,4 @@ out/
 ### macOS ###
 # General
 .DS_Store
+/target/
