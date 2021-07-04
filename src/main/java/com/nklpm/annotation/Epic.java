@@ -9,4 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Epic {
     public String value() default "";
+    public String description() default "";
+    public String link() default "";
 }
