@@ -7,10 +7,10 @@ import java.util.List;
 public class Feature extends BaseDescription {
 
     private List<Scenario> scenarioList;
-    private String testLevel;
+    private TestLevel testLevel;
     private String classPath;
 
-    public Feature(List<Scenario> scenarioList, String testLevel, String classPath) {
+    public Feature(List<Scenario> scenarioList, TestLevel testLevel, String classPath) {
         this.scenarioList = scenarioList;
         this.testLevel = testLevel;
         this.classPath = classPath;
@@ -22,7 +22,7 @@ public class Feature extends BaseDescription {
         String link,
         String description,
         List<Scenario> scenarioList,
-        String testLevel,
+        TestLevel testLevel,
         String classPath
     ) {
         super(name.isEmpty() ? classPath : name, link, description);
@@ -39,11 +39,11 @@ public class Feature extends BaseDescription {
         this.scenarioList = scenarioList;
     }
 
-    public String getTestLevel() {
+    public TestLevel getTestLevel() {
         return testLevel;
     }
 
-    public void setTestLevel(String testLevel) {
+    public void setTestLevel(TestLevel testLevel) {
         this.testLevel = testLevel;
     }
 

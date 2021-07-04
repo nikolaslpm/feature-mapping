@@ -1,6 +1,7 @@
 package com.nklpm.report;
 
 import com.nklpm.core.Feature;
+import com.nklpm.core.TestLevel;
 
 public class TestLevelReport {
 
@@ -33,11 +34,11 @@ public class TestLevelReport {
     }
 
     public void generate(Feature feature) {
-        if (feature.getTestLevel().contains("UT")) {
+        if (feature.getTestLevel().equals(TestLevel.UT)) {
             this.utCount += feature.getScenarioCount();
-        } else if (feature.getTestLevel().contains("IT")) {
+        } else if (feature.getTestLevel().equals(TestLevel.IT)) {
             this.itCount += feature.getScenarioCount();
-        } else if (feature.getTestLevel().contains("CT")) {
+        } else if (feature.getTestLevel().equals(TestLevel.CT)) {
             this.ctCount += feature.getScenarioCount();
         }
     }
