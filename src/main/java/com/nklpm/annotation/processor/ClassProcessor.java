@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nklpm.core.Epic;
 import com.nklpm.core.Feature;
 import com.nklpm.core.Scenario;
+import com.nklpm.core.TestLevel;
 import com.nklpm.report.Report;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,7 @@ public class ClassProcessor {
                 }
             }
 
-            String testLevel = getTestLevel(clazz.getSimpleName());
+            TestLevel testLevel = TestLevel.getTestLevel(clazz.getSimpleName()).orElse(null);
             String classPath = clazz.getName();
             feature = mapToFeature(
                 clazz.getAnnotation(com.nklpm.annotation.Feature.class),
@@ -58,7 +59,7 @@ public class ClassProcessor {
     public Feature mapToFeature(
         com.nklpm.annotation.Feature featureAnnotation,
         List<Scenario> scenarioList,
-        String testLevel,
+        TestLevel testLevel,
         String classPath
     ) {
         if (featureAnnotation != null) {
@@ -85,18 +86,5 @@ public class ClassProcessor {
             );
         }
         return new Scenario(testName);
-    }
-
-    public String getTestLevel(String className) {
-        if (className.contains("Test")) {
-            return "UT";
-        }
-        if (className.contains("IT")) {
-            return "IT";
-        }
-        if (className.contains("CT")) {
-            return "CT";
-        }
-        return "UNKNOWN";
     }
 }
