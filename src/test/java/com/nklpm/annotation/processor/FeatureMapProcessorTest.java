@@ -23,6 +23,6 @@ class FeatureMapProcessorTest {
             return null;
         }).toArray();
 //        new FeatureMapProcessor().initializeObject(new DummyTest(), new Dummy2Test());
-        new FeatureMapProcessor().initializeObject(objects);
+        new ClassProcessor().initializeObject(objects);
     }
 }

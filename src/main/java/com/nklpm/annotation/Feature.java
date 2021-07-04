@@ -10,4 +10,7 @@ import java.lang.annotation.Target;
 public @interface Feature {
 
     public String value()  default "";
+    public String link()  default "";
+    public String description()  default "";
+    public String epicName()  default "";
 }

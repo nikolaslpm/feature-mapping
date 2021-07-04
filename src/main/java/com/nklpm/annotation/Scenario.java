@@ -9,4 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Scenario {
     public String value() default "";
+    public String description() default "";
+    public String link() default "";
+    public String[] steps() default "";
 }
