@@ -1,31 +1,42 @@
 package com.nklpm.core;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
+
 public class Feature extends BaseDescription {
 
-    private Epic epic;
+    private List<Scenario> scenarioList;
     private String testLevel;
     private String classPath;
+
+    public Feature(List<Scenario> scenarioList, String testLevel, String classPath) {
+        this.scenarioList = scenarioList;
+        this.testLevel = testLevel;
+        this.classPath = classPath;
+        super.setName(classPath);
+    }
 
     public Feature(
         String name,
         String link,
         String description,
-        Epic epic,
+        List<Scenario> scenarioList,
         String testLevel,
         String classPath
     ) {
-        super(name, link, description);
-        this.epic = epic;
+        super(name.isEmpty() ? classPath : name, link, description);
+        this.scenarioList = scenarioList;
         this.testLevel = testLevel;
         this.classPath = classPath;
     }
 
-    public Epic getEpic() {
-        return epic;
+    public List<Scenario> getScenarioList() {
+        return scenarioList;
     }
 
-    public void setEpic(Epic epic) {
-        this.epic = epic;
+    public void setScenarioList(List<Scenario> scenarioList) {
+        this.scenarioList = scenarioList;
     }
 
     public String getTestLevel() {
@@ -42,5 +53,10 @@ public class Feature extends BaseDescription {
 
     public void setClassPath(String classPath) {
         this.classPath = classPath;
+    }
+
+    @JsonProperty("scenarioCount")
+    public int getScenarioCount() {
+        return scenarioList.size();
     }
 }

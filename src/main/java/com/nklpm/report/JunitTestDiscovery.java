@@ -7,7 +7,10 @@ import org.junit.platform.launcher.TestPlan;
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
 import org.junit.platform.launcher.core.LauncherFactory;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.junit.platform.engine.discovery.ClassNameFilter.includeClassNamePatterns;
@@ -15,14 +18,20 @@ import static org.junit.platform.engine.discovery.DiscoverySelectors.selectPacka
 
 public class JunitTestDiscovery {
 
-    public List<String> discoverTests(){
+    public List<String> discoverTests() {
+        String packageName =
+            Arrays.stream(Objects.requireNonNull(new File("src/test/java").listFiles(File::isDirectory)))
+                .findFirst()
+                .get()
+                .getName();
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
             .selectors(
-                selectPackage("com.nklpm.template.example")
-//                selectClass(MyTestClass.class)
+////                selectPackage("com.nklpm.template.example")
+//                selectPackage("com")
+                selectPackage(packageName)
             )
             .filters(
-                includeClassNamePatterns(".*Test")
+                includeClassNamePatterns(".*Test", ".*IT", ".*CT")
             )
             .build();
 
